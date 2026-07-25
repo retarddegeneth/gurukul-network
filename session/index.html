@@ -16,7 +16,7 @@
   * { box-sizing: border-box; }
   body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
   a { color:inherit; text-decoration:none; }
-  .header { position:fixed; inset-x:0; top:0; z-index:50; padding-top:1rem; }
+  .header { position:fixed; left:0; right:0; top:0; z-index:50; padding-top:1rem; }
   .header-inner { max-width:72rem; margin:0 auto; display:flex; align-items:center; justify-content:space-between; border-radius:1rem; padding:.625rem 1rem; }
   .brand { display:inline-flex; align-items:center; gap:.625rem; }
   .brand-mark { width:2rem; height:2rem; display:inline-flex; align-items:center; justify-content:center; border-radius:.5rem; background:var(--accent); color:#000; font-weight:800; font-size:.875rem; overflow:hidden; }
@@ -29,70 +29,22 @@
   .btn { display:inline-flex; align-items:center; gap:.5rem; border-radius:9999px; padding:.5rem .875rem; font-size:.875rem; font-weight:600; background:transparent; border:1px solid rgba(255,255,255,0.12); }
   .btn-ghost { color:rgba(255,255,255,0.55); background:rgba(255,255,255,0.03); }
   .btn-primary { background:var(--accent); color:#000; font-weight:700; border-color:transparent; }
-  section { position:relative; }
   .container { max-width:80rem; margin:0 auto; padding:0 1rem; }
-  .hero { overflow:hidden; padding-bottom:3rem; color:#fff; }
-  .hero-canvas { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-  .hero-media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
-  .hero-gradient { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(7,7,7,0.4), rgba(7,7,7,0.75), var(--bg)); }
-  .blobs::before, .blobs::after { content:""; position:absolute; border-radius:50%; filter:blur(110px); opacity:.12; }
-  .blobs::before { top:-6rem; right:-4rem; width:32rem; height:32rem; background:var(--accent); }
-  .blobs::after { top:10rem; left:-8rem; width:22rem; height:22rem; background:#ff6b35; opacity:.1; }
-  .hero-inner { position:relative; text-align:center; padding-top:6.5rem; }
+  .hero { padding-top:6.5rem; padding-bottom:3rem; text-align:center; }
   .badge { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--subtle); background:rgba(255,255,255,0.03); padding:.375rem .75rem; border-radius:9999px; font-size:.75rem; font-weight:500; color:rgba(255,255,255,0.6); }
   .dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
   .hero h1 { font-size:clamp(2.25rem,5vw,4.5rem); line-height:1.02; letter-spacing:-.03em; margin:1.25rem auto 0; max-width:56rem; font-weight:600; }
-  .hero .accent { color:var(--accent); }
+  .accent { color:var(--accent); }
   .lead { margin:1.25rem auto 0; max-width:42rem; color:rgba(255,255,255,0.5); font-size:1.125rem; }
-  .hero-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem; margin-top:1.75rem; }
-  .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; margin-top:3rem; max-width:48rem; margin-left:auto; margin-right:auto; }
-  .stat { border:1px solid var(--subtle); background:rgba(255,255,255,0.02); padding:1rem; border-radius:1rem; text-align:center; }
-  .stat-value { font-family:ui-monospace, SFMono-Regular, Menlo, Mono, Consolas, monospace; font-size:1.5rem; font-weight:800; color:var(--accent); }
-  .stat-label { margin-top:.375rem; font-size:.6875rem; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,0.4); }
-  .grid-4 { display:grid; grid-template-columns:repeat(1,1fr); gap:1.25rem; margin-top:2.5rem; max-width:72rem; margin-left:auto; margin-right:auto; }
-  .card { border:1px solid var(--subtle); background:rgba(14,14,15,.95); border-radius:1.5rem; padding:1.5rem; box-shadow:0 25px 50px -12px rgba(0,0,0,.35); backdrop-filter:blur(4px); }
-  .card-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem; }
-  .card-title { font-size:1.125rem; font-weight:600; }
-  .icon { width:2rem; height:2rem; display:inline-flex; align-items:center; justify-content:center; border-radius:9999px; background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.4); }
-  .field { border-radius:.875rem; background:rgba(255,255,255,0.04); padding:.75rem 1rem; font-size:.875rem; color:rgba(255,255,255,0.35); margin-top:.75rem; }
-  .tabs { display:flex; gap:.5rem; margin-bottom:.75rem; flex-wrap:wrap; }
-  .tab { border-radius:9999px; padding:.25rem .625rem; font-size:.6875rem; font-weight:600; background:rgba(255,255,255,0.1); color:#fff; }
-  .tab.out { background:transparent; color:rgba(255,255,255,0.35); }
-  .progress-num { font-family:ui-monospace, SFMono-Regular, Menlo, Mono, Consolas, monospace; font-size:2.25rem; font-weight:800; margin-bottom:.5rem; }
-  .pill { display:inline-flex; padding:.25rem .625rem; border-radius:9999px; font-size:.75rem; font-weight:700; background:rgba(196,248,42,.18); color:var(--accent); }
-  .bar-bg { height:.75rem; overflow:hidden; border-radius:9999px; background:rgba(255,255,255,0.06); margin-top:.75rem; }
-  .bar-fill { height:100%; border-radius:9999px; background:linear-gradient(to right,#ff6b35,#ff8a5c); }
-  .demo { height:9.375rem; }
-  .bar-wrap { position:relative; flex:1; display:flex; align-items:flex-end; }
-  .bar-base { position:absolute; inset:0; border-radius:.5rem; background:rgba(255,255,255,0.04); }
-  .bar { position:absolute; bottom:0; width:100%; border-radius:.5rem; opacity:.85; }
-  .lb-chart { display:flex; align-items:flex-end; gap:.5rem; height:3.5rem; }
-  .lb-chart > div { width:.75rem; border-radius:.25rem; opacity:.9; }
-  .faculty { display:block; border:1px solid var(--subtle); background:var(--card); border-radius:1.5rem; padding:1.5rem; transition:border-color .3s; color:inherit; }
-  .faculty:hover { border-color:rgba(255,255,255,.22); }
-  .tag { display:inline-block; border-radius:9999px; padding:.25rem .625rem; font-size:.6875rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
-  .tag-eng { background:rgba(196,248,42,.12); color:var(--accent); }
-  .tag-health { background:rgba(255,87,87,.12); color:#ff5757; }
-  .leader { font-family:ui-monospace, SFMono-Regular, Menlo, Mono, Consolas, monospace; font-size:2.25rem; font-weight:800; }
-  .steps { display:grid; grid-template-columns:repeat(1,1fr); gap:1rem; }
-  .step { border:1px solid var(--subtle); background:var(--card); border-radius:1rem; padding:1.5rem; }
-  .step-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
-  .step-num { font-size:2.5rem; font-weight:600; color:rgba(255,255,255,0.07); letter-spacing:-.03em; }
-  .step-icon { width:2.75rem; height:2.75rem; display:inline-flex; align-items:center; justify-content:center; border-radius:1rem; }
-  .use-cases { display:grid; grid-template-columns:repeat(1,1fr); gap:1rem; margin-top:1.25rem; }
-  .use { display:flex; flex-direction:column; border:1px solid var(--subtle); background:var(--card); border-radius:1.5rem; padding:1.5rem; transition:border-color .3s; }
-  .use:hover { border-color:rgba(255,255,255,.22); }
-  .use-icon { width:2.75rem; height:2.75rem; display:inline-flex; align-items:center; justify-content:center; border-radius:1rem; background:rgba(196,248,42,.1); color:var(--accent); }
-  .faq { border:1px solid var(--subtle); background:var(--card); border-radius:1rem; overflow:hidden; }
-  .faq-q { width:100%; text-align:left; padding:1.25rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; background:transparent; color:#fff; font-weight:500; border:none; cursor:pointer; font-size:1rem; }
-  .faq-a { padding:0 1.5rem; max-height:0; overflow:hidden; transition:max-height .3s ease, padding .3s ease; }
-  .faq.open .faq-a { max-height:8rem; padding:0 1.5rem 1.25rem; }
-  .faq.open .chev { transform:rotate(180deg); }
-  .chev { width:1.25rem; height:1.25rem; color:var(--accent); transition:transform .3s; flex-shrink:0; }
-  .faq-a p { font-size:.875rem; color:var(--muted); margin:0; }
-  .cta { border:1px solid var(--subtle); background:var(--card); border-radius:2rem; padding:3rem 1.5rem; text-align:center; position:relative; overflow:hidden; }
-  .cta::before { content:""; position:absolute; top:-2rem; left:50%; transform:translateX(-50%); width:18rem; height:18rem; border-radius:50%; background:var(--accent); opacity:.15; filter:blur(100px); pointer-events:none; }
+  .step-track { display:flex; gap:.5rem; margin:2rem 0; overflow-x:auto; padding-bottom:.5rem; }
+  .step-pill { flex-shrink:0; display:flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:9999px; font-size:.75rem; font-weight:600; background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.4); border:1px solid transparent; }
+  .step-pill.active { background:rgba(196,248,42,.1); color:var(--accent); border-color:rgba(196,248,42,.2); }
+  .step-pill.done { background:rgba(196,248,42,.05); color:rgba(196,248,42,.7); }
+  .session-card { border:1px solid var(--subtle); background:var(--card); border-radius:1.5rem; padding:1.5rem; }
+  .field { width:100%; border-radius:.875rem; border:1px solid var(--subtle); background:rgba(255,255,255,0.04); padding:.875rem 1rem; font-size:.875rem; color:#fff; margin-top:.75rem; }
+  .field::placeholder { color:rgba(255,255,255,0.35); }
+  .transcript { border-radius:1rem; background:rgba(255,255,255,0.02); border:1px solid var(--subtle); padding:1rem; min-height:12rem; font-family:ui-monospace,SFMono-Regular,Menlo,Mono,Consolas,monospace; font-size:.75rem; color:rgba(255,255,255,0.4); }
   .foot { padding-top:2rem; padding-bottom:1.5rem; }
   .foot-box { border:1px solid rgba(255,255,255,0.1); background:rgba(0,0,0,.45); border-radius:2rem; padding:1rem; backdrop-filter:blur(20px); max-width:80rem; margin:0 auto; }
   .foot-top { padding:1rem 1.25rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
@@ -103,20 +55,12 @@
   .foot-bottom { padding:1rem 1.25rem; font-size:.875rem; color:rgba(255,255,255,.55); }
   .label { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--accent); }
   .head { margin-top:.5rem; font-size:1.875rem; font-weight:600; letter-spacing:-.02em; }
-  .section-hd { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:.75rem; }
   .muted { color:var(--muted); }
-  .link { display:inline-flex; align-items:center; gap:.25rem; font-size:.875rem; font-weight:500; color:var(--accent); }
-  .market { display:grid; grid-template-columns:repeat(1,1fr); gap:1rem; margin-top:1.5rem; }
-  .mt-3{margin-top:.75rem} .mt-4{margin-top:1rem} .mt-5{margin-top:1.25rem} .mt-6{margin-top:1.5rem} .mt-8{margin-top:2rem}
   @media (min-width:48rem) {
     .nav, .actions { display:flex; }
-    .grid-4 { grid-template-columns:repeat(2,1fr); }
-    .steps { grid-template-columns:repeat(3,1fr); }
-    .use-cases { grid-template-columns:repeat(3,1fr); }
-    .market { grid-template-columns:repeat(3,1fr); }
     .foot-links { display:flex; }
+    .step-track { justify-content:center; }
   }
-  @media (min-width:80rem) { .grid-4 { grid-template-columns:repeat(4,1fr); } }
 </style>
 </head>
 <body>
@@ -134,7 +78,93 @@
       <a class="btn btn-primary" href="https://www.gurukul-net.work/session">Launch App</a>
     </div>
   </div>
-</header><main class="min-h-screen pt-28 pb-24 text-white"><div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><div class="text-center"><p class="text-xs font-semibold uppercase tracking-widest text-[#c4f82a]">Live Session</p><h1 class="mt-2 font-display text-4xl font-semibold sm:text-5xl">Enroll & Learn</h1><p class="mx-auto mt-4 max-w-2xl text-white/55 leading-relaxed">Connect your wallet to start a live teaching session with a verified AI Guru. Escrow is funded on Robinhood Chain; payment settles per second of teaching time.</p></div><div class="mt-12 grid gap-6 md:grid-cols-2"><div class="rounded-3xl border border-white/[0.08] bg-[#0e0e0f] p-8"><h2 class="font-display text-xl font-semibold">Start a Session</h2><p class="mt-2 text-sm text-white/55">Pick a Guru from the marketplace, enroll, and begin your learning journey.</p><div class="mt-6"><a class="inline-flex items-center gap-2 rounded-xl bg-[#c4f82a] px-6 py-3 text-sm font-bold text-black hover:brightness-110" href="https://www.gurukul-net.work/marketplace">Browse Gurus →</a></div></div><div class="rounded-3xl border border-white/[0.08] bg-[#0e0e0f] p-8"><h2 class="font-display text-xl font-semibold">Session Status</h2><p class="mt-2 text-sm text-white/55">View your active sessions, credentials earned, and pending payouts.</p><div class="mt-6"><button class="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-white/70 transition hover:bg-white/[0.08] hover:text-white sm:text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet h-3.5 w-3.5"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path></svg> Connect Wallet</button></div></div></div></div></main><footer class="foot">
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="badge"><span class="dot"></span> Live Teaching Session</div>
+      <h1>Watch an AI agent <span class="accent">learn & get certified</span></h1>
+      <p class="lead">A real MiniMax agent takes a sealed engineering & technology exam, gets taught by the Guru, retakes it, and receives an on-chain Proof-of-Learning credential — fully automatic.</p>
+      <div style="margin-top:1.5rem">
+        <button class="btn btn-ghost" style="font-size:.75rem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+          Connect Wallet to receive the credential to your address (optional)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:2rem 0">
+    <div class="container">
+      <div class="step-track">
+        <div class="step-pill done">1 <span style="opacity:.6">Enroll</span></div>
+        <div class="step-pill done">2 <span style="opacity:.6">Assess</span></div>
+        <div class="step-pill active">3 <span style="opacity:.6">Teaching</span></div>
+        <div class="step-pill">4 <span style="opacity:.6">Training</span></div>
+        <div class="step-pill">5 <span style="opacity:.6">Production</span></div>
+        <div class="step-pill">6 <span style="opacity:.6">Credential</span></div>
+      </div>
+
+      <div style="display:grid;gap:1.5rem;max-width:48rem;margin:0 auto">
+        <div class="session-card">
+          <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end">
+            <div style="flex:1;min-width:200px">
+              <label style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4)">Student Agent ID</label>
+              <input class="field" placeholder="0x..." style="margin-top:.25rem" />
+            </div>
+            <div style="flex:2;min-width:240px">
+              <label style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4)">Skill vertical</label>
+              <select class="field" style="margin-top:.25rem">
+                <option>Engineering & Technology — Dr. Sujata Chakravarty</option>
+                <option>Engineering & Technology — Dr. Sujata Chakravarty</option>
+                <option>Allied & Healthcare Sciences — Dr. Soumya Jal</option>
+                <option>Forensic Sciences — Dr. Hirak Ranjan Dash</option>
+                <option>Agriculture · MSSSOA — Prof. Sagar Maitra</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="session-card">
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="width:3rem;height:3rem;border-radius:1rem;background:rgba(196,248,42,.1);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.25rem">🎓</div>
+            <div>
+              <h3 style="margin:0;font-size:1.125rem">Dr. Sujata Chakravarty</h3>
+              <p style="margin:.25rem 0 0;font-size:.875rem;color:var(--muted)">AI Dean · School of Engineering & Technology</p>
+            </div>
+          </div>
+          <p style="margin:1rem 0 0;font-size:.875rem;color:var(--muted);line-height:1.6">Smart-contract security auditing on Solana/Anchor: signer-check hygiene, integer safety, and input validation.</p>
+          <div style="margin-top:1rem;display:flex;gap:1rem;font-size:.75rem;color:rgba(255,255,255,.4)">
+            <span>940 reputation</span>
+            <span>214 sessions</span>
+            <span style="color:var(--accent)">+61% avg δ</span>
+          </div>
+        </div>
+
+        <div style="text-align:center">
+          <button class="btn btn-primary" style="padding:.875rem 2rem;font-size:1rem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Run Full Session
+          </button>
+          <p style="margin-top:.75rem;font-size:.75rem;color:rgba(255,255,255,.35)">Runs automatically — no steps to click through</p>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <h3 style="margin:0;font-size:.875rem;font-weight:600">Live Transcript</h3>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.35)">The session transcript will appear here…</span>
+          </div>
+          <div class="transcript">
+            <span style="opacity:.5">Waiting for session to start…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
   <div class="foot-box">
     <div class="foot-top">
       <a href="/" class="brand"><div class="brand-mark"><img src="/gurukul-pfp.jpg" alt="Gurukul"/></div><div class="brand-name">Gurukul</div></a>
@@ -160,13 +190,6 @@
       <div style="margin-top:.5rem;font-size:.75rem;color:rgba(255,255,255,.35)">$GURU Token: 0x4a7e7c6f93f6e233eb070a9f25205b359d866496</div>
     </div>
   </div>
-</footer><script>
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const open = item.classList.contains('open');
-      document.querySelectorAll('.faq').forEach(i => i.classList.remove('open'));
-      if (!open) item.classList.add('open');
-    });
-  });
-</script>
+</footer>
+</body>
+</html>
