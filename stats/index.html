@@ -41,7 +41,11 @@
   .stat-card { border:1px solid var(--subtle); background:var(--card); border-radius:1.5rem; padding:1.5rem; text-align:center; }
   .stat-value { font-family:ui-monospace,SFMono-Regular,Menlo,Mono,Consolas,monospace; font-size:2.5rem; font-weight:800; color:var(--accent); }
   .stat-label { margin-top:.5rem; font-size:.6875rem; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,0.4); }
-  .mt-3{margin-top:.75rem} .mt-4{margin-top:1rem} .mt-5{margin-top:1.25rem} .mt-6{margin-top:1.5rem} .mt-8{margin-top:2rem}
+  .table-wrap { overflow:hidden; border-radius:1.5rem; border:1px solid var(--subtle); background:var(--card); margin-top:2rem; }
+  .table-wrap table { width:100%; text-align:left; border-collapse:collapse; }
+  .table-wrap th { padding:1rem 1.5rem; font-size:.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.02); }
+  .table-wrap td { padding:1rem 1.5rem; font-size:.875rem; color:rgba(255,255,255,0.7); border-top:1px solid var(--subtle); }
+  .table-wrap tr:hover td { background:rgba(255,255,255,0.02); }
   .foot { padding-top:2rem; padding-bottom:1.5rem; }
   .foot-box { border:1px solid rgba(255,255,255,0.1); background:rgba(0,0,0,.45); border-radius:2rem; padding:1rem; backdrop-filter:blur(20px); max-width:80rem; margin:0 auto; }
   .foot-top { padding:1rem 1.25rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
@@ -55,9 +59,10 @@
   .muted { color:var(--muted); }
   @media (min-width:48rem) {
     .nav, .actions { display:flex; }
-    .stats-grid { grid-template-columns:repeat(3,1fr); }
+    .stats-grid { grid-template-columns:repeat(2,1fr); }
     .foot-links { display:flex; }
   }
+  @media (min-width:80rem) { .stats-grid { grid-template-columns:repeat(4,1fr); } }
 </style>
 </head>
 <body>
@@ -76,12 +81,13 @@
     </div>
   </div>
 </header>
+
 <main>
   <section class="hero">
     <div class="container">
-      <div class="badge"><span class="dot"></span> Live on Robinhood Chain Mainnet · Powered by Virtuals & MiniMax</div>
+      <div class="badge"><span class="dot"></span> Live network stats</div>
       <h1>The state of <span class="accent">Gurukul</span></h1>
-      <p class="lead">Real-time network metrics. On-chain, verifiable, transparent.</p>
+      <p class="lead">Every number below is read live from Robinhood Chain Testnet + our session engine.</p>
     </div>
   </section>
 
@@ -90,27 +96,42 @@
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value">—</div>
-          <div class="stat-label">Credentials Minted</div>
+          <div class="stat-label">Credentials minted</div>
         </div>
         <div class="stat-card">
           <div class="stat-value">—</div>
-          <div class="stat-label">Certified Sessions</div>
+          <div class="stat-label">Sessions in flight</div>
         </div>
         <div class="stat-card">
           <div class="stat-value">—</div>
-          <div class="stat-label">Avg Skill Delta</div>
+          <div class="stat-label">Certified sessions</div>
         </div>
         <div class="stat-card">
           <div class="stat-value">—</div>
-          <div class="stat-label">Active Gurus</div>
+          <div class="stat-label">Avg delta</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">—</div>
-          <div class="stat-label">Total Students</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">—</div>
-          <div class="stat-label">TVL (ETH)</div>
+      </div>
+
+      <div style="margin-top:3rem">
+        <h2 class="head" style="font-size:1.25rem">Recent credentials</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Credential ID</th>
+                <th>Student</th>
+                <th>Guru</th>
+                <th>Skill</th>
+                <th>Delta</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="6" style="text-align:center;color:rgba(255,255,255,.35)">No credentials minted yet.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
